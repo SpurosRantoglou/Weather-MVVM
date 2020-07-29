@@ -11,8 +11,7 @@ interface UnitSpecificCurrentWeatherEntry {
     val uvIndex: Int
     val visibility: Int
     val weatherCode: Int
-    val weatherDescriptions: List<String>
-    val weatherIcons: List<String>
+
     val windDegree: Int
     val windDir: String
     val windSpeed: Int

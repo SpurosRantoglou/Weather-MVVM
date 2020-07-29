@@ -18,6 +18,6 @@ interface CurrentWeatherDAO {
 
     //Now we can create function about getting only C or F, depents on user preferences
     //That's why if we want we create different classes Imperial CurrentWeatherEntry etc
-    @Query("select * from current_weather wher id = $CURRENT_WEATHER_ID")
+    @Query("select * from current_weather where id = $CURRENT_WEATHER_ID")
     fun getWeatherImperial(): LiveData<ImperialCurrentWeatherEntry>
 }
