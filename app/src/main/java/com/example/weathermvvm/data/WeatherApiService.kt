@@ -1,5 +1,7 @@
 package com.example.weathermvvm.data
 
+import com.example.weathermvvm.data.db.network.ConnectivityInterceptor
+import com.example.weathermvvm.data.db.network.ConnectivityInterceptorImpl
 import com.example.weathermvvm.data.db.network.response.CurrentWeatherResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
@@ -23,7 +25,9 @@ interface WeatherApiService {
     ): Deferred<CurrentWeatherResponse>
 
     companion object {
-        operator fun invoke(): WeatherApiService{
+        operator fun invoke(
+            connectivityInterceptor: ConnectivityInterceptor
+        ): WeatherApiService{
             val requestInterceptor = Interceptor {chain ->
                 val url = chain.request()
                     .url()
@@ -41,6 +45,7 @@ interface WeatherApiService {
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(requestInterceptor)
+                .addInterceptor(connectivityInterceptor)
                 .build()
 
             return Retrofit.Builder()
