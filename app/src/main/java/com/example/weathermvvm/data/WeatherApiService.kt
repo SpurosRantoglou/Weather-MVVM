@@ -1,6 +1,6 @@
 package com.example.weathermvvm.data
 
-import com.example.weathermvvm.data.response.CurrentWeatherResponse
+import com.example.weathermvvm.data.db.network.response.CurrentWeatherResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
